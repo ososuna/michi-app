@@ -37,8 +37,8 @@ export const Tabs = () => {
     })}
   >
       <Tab.Screen name="Random" component={ RandomScreen } />
-      <Tab.Screen name="Favorites" component={ FavoritesScreen } />
       <Tab.Screen name="Search" component={ SearchScreen } />
+      <Tab.Screen name="Favorites" component={ FavoritesScreen } />
     </Tab.Navigator>
   );
 };
