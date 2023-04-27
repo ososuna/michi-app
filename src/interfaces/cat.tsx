@@ -5,3 +5,8 @@ export interface Cat {
   width:  number;
   height: number;
 }
+
+export interface Dimensions {
+  height: number;
+  width:  number;
+}
