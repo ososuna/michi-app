@@ -50,3 +50,17 @@ export interface Weight {
   imperial: string;
   metric:   string;
 }
+
+export interface CatCategory {
+  breeds:     any[];
+  categories: Category[];
+  id:         string;
+  url:        string;
+  width:      number;
+  height:     number;
+}
+
+export interface Category {
+  id:   number;
+  name: string;
+}
