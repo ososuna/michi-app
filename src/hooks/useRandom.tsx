@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import catApi from '../api/catApi';
 import { Cat, Dimensions } from 'src/interfaces/cat';
@@ -7,6 +6,7 @@ export const useRandom = () => {
 
   const [ randomImg, setRandomImg ] = useState('');
   const [ dimensions, setDimensions ] = useState({} as Dimensions);
+  const [ refreshing, setRefreshing ] = useState(false);
 
   useEffect(() => {
     getRandom();
@@ -18,8 +18,18 @@ export const useRandom = () => {
     setRandomImg( data[0].url );
   };
 
+  const onRefresh = () => {
+    setRefreshing( true );
+    getRandom();
+    setTimeout(() => {
+      setRefreshing( false );
+    }, 1000);
+  };
+
   return {
     randomImg,
     dimensions,
+    refreshing,
+    onRefresh,
   };
 };
