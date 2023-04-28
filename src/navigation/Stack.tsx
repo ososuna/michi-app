@@ -3,12 +3,12 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { Tabs } from './Tabs';
 import { WelcomeScreen } from '../screens/WelcomeScreen';
 import { CatScreen } from '../screens/CatScreen';
-import { Cat } from '../interfaces/cat';
+import { CatImage } from '../interfaces/cat';
 
 export type RootStackParams = {
   Welcome: undefined;
   Tabs: undefined;
-  Cat: Cat;
+  Cat: CatImage;
 }
 
 const Stack = createStackNavigator<RootStackParams>();

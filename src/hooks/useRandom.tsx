@@ -1,18 +1,18 @@
 import { useEffect, useState } from 'react';
 import catApi from '../api/catApi';
-import { Cat } from 'src/interfaces/cat';
+import { CatImage } from 'src/interfaces/cat';
 
 export const useRandom = () => {
 
   const [ refreshing, setRefreshing ] = useState(false);
-  const [ cat, setCat ] = useState({} as Cat);
+  const [ cat, setCat ] = useState({} as CatImage);
 
   useEffect(() => {
     getRandom();
   }, []);
 
   const getRandom = async() => {
-    const { data } = await catApi.get<Cat[]>('images/search');
+    const { data } = await catApi.get<CatImage[]>('images/search');
     setCat( data[0] );
   };
 
