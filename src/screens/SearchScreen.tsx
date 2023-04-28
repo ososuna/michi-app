@@ -39,12 +39,8 @@ export const SearchScreen = () => {
       </View>
       <View style={{ marginTop: 25, flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', zIndex : -5 }}>
         {
-          ( isLoading ) ?
-            <ActivityIndicator size={ 50 } />
-          :
-            cats.map( ({ url, id }) => (
-              <Image key={ id } style={{ width: 110, height: 110, margin: 10 }} source={{ uri: url }} />
-            ))
+          ( isLoading ) ? <ActivityIndicator size={ 50 } />
+          : cats.map( ({ url, id }) => ( <Image key={ id } style={{ width: 110, height: 110, margin: 10 }} source={{ uri: url }} /> ))
         }
       </View>
     </SafeAreaView>
