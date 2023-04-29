@@ -48,7 +48,7 @@ export const CatScreen = ({ route }: Props) => {
       style: { width: '100%' },
       animationType: 'slide-in',
     };
-    toast.show('Added to favorites!', toastOptions);
+    toast.show('Added to favorites', toastOptions);
   };
 
   return (
