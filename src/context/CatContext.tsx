@@ -1,9 +1,9 @@
 import React, { createContext, useReducer } from 'react';
 import { catReducer } from './catReducer';
-import { Cat } from 'src/interfaces/cat';
+import { CatFavorite } from 'src/interfaces/cat';
 
 export interface CatState {
-  cats: Cat[];
+  cats: CatFavorite[];
 }
 
 export const catInitialState: CatState = {
@@ -12,7 +12,7 @@ export const catInitialState: CatState = {
 
 export interface CatContextProps {
   catState: CatState;
-  addCat: (cat: Cat) => void;
+  addCat: (cat: CatFavorite) => void;
 }
 
 export const CatContext = createContext({} as CatContextProps);
@@ -21,7 +21,7 @@ export const CatProvider = ({ children }: { children: JSX.Element }) => {
 
   const [ catState, dispatch ] = useReducer(catReducer, catInitialState);
 
-  const addCat = (cat: Cat) => {
+  const addCat = (cat: CatFavorite) => {
     dispatch({ type: 'addCat', payload: cat });
   };
 

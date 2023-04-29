@@ -1,8 +1,8 @@
 import { CatState } from './CatContext';
-import { Cat } from '../interfaces/cat';
+import { CatFavorite } from '../interfaces/cat';
 
 type CatAction =
-| { type: 'addCat', payload: Cat }
+| { type: 'addCat', payload: CatFavorite }
 | { type: 'setIsLoading', payload: boolean }
 
 export const catReducer = ( state: CatState, action: CatAction ): CatState => {

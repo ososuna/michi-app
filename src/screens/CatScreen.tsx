@@ -1,12 +1,16 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, { useCallback } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { SafeAreaView, View, Image, TouchableOpacity, Text, Linking, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { useToast } from 'react-native-toast-notifications';
 import { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParams } from '../navigation/Stack';
 import Icon from 'react-native-ionicons';
+import { ToastOptions } from 'react-native-toast-notifications/lib/typescript/toast';
+import { CatContext } from '../context/CatContext';
 
 interface Props extends StackScreenProps<RootStackParams, 'Cat'>{}
+
 
 type OpenURLButtonProps = {
   url: string;
@@ -29,9 +33,23 @@ const OpenURLButton = ({ url }: OpenURLButtonProps) => {
 
 export const CatScreen = ({ route }: Props) => {
 
-  const { url, breeds } = route.params;
-
+  const { url, breeds, id  } = route.params;
   const { goBack } = useNavigation();
+  const { addCat } = useContext( CatContext );
+  const toast = useToast();
+
+
+  const handleAddCatToFavorites = () => {
+    addCat({ url, id });
+    const toastOptions: ToastOptions = {
+      placement: 'bottom',
+      duration: 2000,
+      icon: <Icon name="heart" color="white" size={ 20 } />,
+      style: { width: '100%' },
+      animationType: 'slide-in',
+    };
+    toast.show('Added to favorites!', toastOptions);
+  };
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -42,7 +60,9 @@ export const CatScreen = ({ route }: Props) => {
           </TouchableOpacity>
         </View>
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'flex-end' }}>
-          <Icon name="heart" style={{ marginRight: 25 }} />
+          <TouchableOpacity onPress={ () => handleAddCatToFavorites() }>
+            <Icon name="heart" style={{ marginRight: 25 }} />
+          </TouchableOpacity>
         </View>
       </View>
       <View style={{ flex: 20, alignItems: 'center' }}>
